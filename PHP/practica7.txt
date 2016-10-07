@@ -1,0 +1,8 @@
+Que li passa a les següents variables?
+  -Variable = 2;
+  -$ variable = 2;
+  -Variable$ = 2;
+  -$Nom de la variable = 2;
+  -$_variable 2;
+
+  -- Es troben totes mal perque no se han inicializat bé.

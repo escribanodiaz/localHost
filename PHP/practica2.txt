@@ -1,0 +1,11 @@
+1-Entre quines etiquetes s'escriu el codi php?
+	<?php ?>
+2-Quines funcions s'utilizen per mostrar text en php?
+	print y echo
+3-Quin es la extension de un archiu php?
+	.php
+4-Per a que s'utiliza //?¿ i /*?
+	//-es para comentar de solo una linea.
+	/*-comento varias lineas.
+5-On hem de posar?
+	A finalizar la sintaxis.

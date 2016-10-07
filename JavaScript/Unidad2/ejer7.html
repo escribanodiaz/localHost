@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>About Me</title>
+</head>
+<body>
+  <h1>About Me</h1>
+
+  <ul>
+    <li>Nickname: <span id="nickname"></span>
+    <li>Favorites:  <span id="favorites"></span>
+    <li>Hometown: <span id="hometown"></span>
+   </ul>
+
+
+    <script>
+//·Ejercicio 7
+  window.onload=function(){
+      var body = document.getElementsByTagName('body');
+      body[0].style.fontFamily = "Arial, sans serif";
+
+      var nickn = document.getElementById('nickname');
+      nickn.innerHTML="Escribano";
+      var favorites = document.getElementById('favorites');
+      favorites.innerHTML = " Winnie the Pooh, Pocoyo, Bob Esponja";
+      var home  = document.getElementById('hometown');
+      home.innerHTML = "Aldaia, Valencia";
+
+      var estilo = document.getElementsByTagName('li');
+      for(var a = 0;a<estilo.length;a++){
+        estilo[a].className= "listit";
+        estilo[a].style.color="red";
+      }
+      //var style = document.createElement("style"); creas la etqueta style
+
+      var imagen = document.createElement("img");
+      imagen.setAttribute("src", "img4.jpg");
+      document.getElementsByTagName("body")[0].appendChild(imagen);
+
+
+///////////////////////////////////////////////////
+
+//Ejercicio 8
+
+    var h1 = document.createElement("h1");
+    h1.appendChild(document.createTextNode("My Book List"));
+    document.getElementsByTagName("body")[0].appendChild(h1);
+
+    var bookfavo = favorites.innerHTML;
+    var bookarraylist = bookfavo.split(",");
+    var ulother = document.createElement("ul");
+
+    for(var c = 0;c<bookarraylist.length;c++){
+      var liother = document.createElement("li");
+      liother.appendChild(document.createTextNode(bookarraylist[c]));
+      ulother.appendChild(liother);
+      var a = document.createElement("a");
+      var img2 = document.createElement("img");
+        if(c==0){
+          a.setAttribute("href","https://es.wikipedia.org/wiki/Winnie_the_Pooh");
+          a.appendChild(document.createTextNode(bookarraylist[c]));
+          img2.setAttribute("src","wninie.jpg");
+          img2.style.width="120px";
+          liother.style.border="1px solid blue";
+          img2.style.height="120px";
+          liother.appendChild(a);
+          liother.appendChild(img2);
+        }
+        else if(c==1) {
+          a.setAttribute("href","http://www.pocoyo.com/");
+          a.appendChild(document.createTextNode(bookarraylist[c]));
+          img2.setAttribute("src","pocoyo.jpg");
+          liother.style.border="1px solid blue";
+          img2.style.width="120px";
+          img2.style.height="120px";
+          liother.appendChild(a);
+          liother.appendChild(img2);
+        }
+        else {
+          a.setAttribute("href","https://es.wikipedia.org/wiki/Bob_Esponja");
+          a.appendChild(document.createTextNode(bookarraylist[c]));
+          img2.setAttribute("src","bobesponja.jpg");
+          liother.style.border="1px solid blue";
+          img2.style.width="120px";
+          img2.style.height="120px";
+          liother.appendChild(a);
+          liother.appendChild(img2);
+        }
+    }
+    document.getElementsByTagName("body")[0].appendChild(ulother);
+  }
+   </script>
+
+ </body>
+</html>

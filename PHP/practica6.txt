@@ -1,0 +1,9 @@
+1.Quin signe s'utiliza per nomenar una variable? On va situat?
+    -El signe que s'utiliza es $ i va situat avant del nom de la variable
+2.Quins caracters poden contenir els noms de variables?
+    -a-z,A-Z,0-9 i _
+3.Distingeixen entre majuscules i minuscules?
+    -Si
+4.Per a que necessitem el signe = i el ;?
+    -el ; es per a tancar una sentencia.
+    -el = es per a ficar un valor a la variable.

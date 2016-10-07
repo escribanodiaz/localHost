@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejecicio de Prueba</title>
+        <script>
+            var contador = 0;
+            var number;
+            while (contador  < 10) {
+                number = prompt("Enter a number num " + (contador + 1) + " :");
+
+                if (number == "") {
+                    alert("No has introducido nada");
+                } else if (!isNaN(number)) {
+                    alert("Has introducido un numero");
+                    break;
+                } else {
+                    alert("Te has equivocado introduce un numero");
+                }
+                contador++;
+            }
+        </script>
+    </head>
+    <body></body>
+</html>
