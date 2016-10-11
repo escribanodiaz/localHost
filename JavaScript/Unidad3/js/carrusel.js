@@ -5,10 +5,6 @@ window.onload=function() {
     var img3 = document.getElementById("img3");
     var img4 = document.getElementById("img4");
 
-    img1.onmouseover=function(){
-      img1.style.width="250px";
-      img1.style.height="250px";
-    }
     img1.onmouseout=function(){
       img1.style.width="100px";
       img1.style.height="100px";
