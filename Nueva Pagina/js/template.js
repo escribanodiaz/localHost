@@ -10,7 +10,7 @@
 (function($){
 	$(document).ready(function(){
 
-		$(".banner-image").backstretch('images/banner.jpg');
+		//$(".banner-image").backstretch('images/banner.jpg');
 
 		// Fixed header
 		//-----------------------------------------------
@@ -71,7 +71,7 @@
 					$this.appear(function() {
 						setTimeout(function() {
 							$this.addClass('animated object-visible ' + animationEffect);
-						}, 400);
+						}, 100);
 					}, {accX: 0, accY: -130});
 				} else {
 					$this.addClass('object-visible');
@@ -87,7 +87,7 @@
 				var $container = $('.isotope-container').isotope({
 					itemSelector: '.isotope-item',
 					layoutMode: 'masonry',
-					transitionDuration: '0.6s',
+					transitionDuration: '0.2s',
 					filter: "*"
 				});
 				// filter items on button click

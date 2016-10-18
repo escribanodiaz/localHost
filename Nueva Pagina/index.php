@@ -9,7 +9,10 @@
     <meta name=”robots” content="Index, Follow">
 
 		<title>Antonio Escribano || Programador Web Aldaia</title>
-		<link rel="shortcut icon" href="images/favicon.ico">
+		<script type="text/javascript" src="plugins/isotope/isotope.pkgd.min.js"></script>
+		<script type="text/javascript" src="plugins/jquery.backstretch.min.js"></script>
+		<script type="text/javascript" src="plugins/jquery.appear.min.js"></script>
+		<link rel="shortcut icon" href="images/logo.ico">
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,300&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -18,16 +21,6 @@
 		<link href="css/style.min.css" rel="stylesheet">
 		<link href="css/custom.css" rel="stylesheet">
 
-		<!--Analytics-->
-		<script>
-  				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  					m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  				})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  				ga('create', 'UA-85672503-1', 'auto');
-  				ga('send', 'pageview');
-</script>
 
 	</head>
 
@@ -42,7 +35,7 @@
 								<a href="#banner"><img id="logo" src="images/logo.png" alt="Worthy"></a>
 							</div>
 							<div class="site-name-and-slogan smooth-scroll">
-								<div class="site-name"><a href="#banner">Brands Web</a></div>
+								<div class="site-name"><a href="#banner">Brand</a></div>
 								<div class="site-slogan">Programador Web aldaia</div>
 							</div>
 						</div>
@@ -218,36 +211,36 @@
 							<div class="col-sm-6 col-md-3 isotope-item web-design">
 								<div class="image-box">
 									<div class="overlay-container">
-										<img src="images/portfolio-1.jpg" alt="">
+										<img src="images/Galeria.png" alt="galeria">
 										<a class="overlay" data-toggle="modal" data-target="#project-1">
 											<i class="fa fa-search-plus"></i>
-											<span>Web Design</span>
+											<span>PHP</span>
 										</a>
 									</div>
-									<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-1">Project Title</a>
+									<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-1">Galeria de Imagenes</a>
 								</div>
 								<div class="modal fade" id="project-1" tabindex="-1" role="dialog" aria-labelledby="project-1-label" aria-hidden="true">
 									<div class="modal-dialog modal-lg">
 										<div class="modal-content">
 											<div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-												<h4 class="modal-title" id="project-1-label">Project Title</h4>
+												<h4 class="modal-title" id="project-1-label">Galeria de Imagenes</h4>
 											</div>
 											<div class="modal-body">
-												<h3>Project Description</h3>
+												<h3>Descripcion del proyecto</h3>
 												<div class="row">
 													<div class="col-md-6">
-														<p>Este el projecto 1 de prueba</p>
-														<p>Proximamente pondre las caracteristicas del projecto.</p>
+														<p>Este es el primer proyecto que hacemos en <b>php</b> y trata sobre una <b>galeria de imagenes</b>.</p>
+														<p><b>La galeria de imagenes</b> es para cuando te metas en el servidor las imagenes este todo organizado y puedes buscarlas, eliminarlas, crear otro albumes y añadir imagenes al servidor.</p>
 													</div>
 													<div class="col-md-6">
-														<img src="images/portfolio-1_mo.jpg" alt="">
+														<img src="images/Galeria_mo.png" alt="galeria">
 													</div>
 												</div>
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
-												<!--<button type="button" class="btn btn-sm btn-default" onclick="window.open('http://escribanodiaz.com.es/','_blank')">Ver pagina</button>-->
+												<button type="button" class="btn btn-sm btn-default" onclick="window.open('http://escribanodiaz.com.es/PHP/GaleriaIMG/sobremi.php','_blank')">Galeria de Imagenes</button>
 											</div>
 										</div>
 									</div>
@@ -841,7 +834,7 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="footer-content">
-								<form role="form" id="footer-form">
+								<form role="form" id="footer-form" action="<?php $_SERVER["PHP_SHELF"];?>" method="post">
 									<div class="form-group has-feedback">
 										<label class="sr-only" for="name2">Nombre</label>
 										<input type="text" class="form-control" id="name2" placeholder="Name" name="name2" required>
@@ -857,7 +850,7 @@
 										<textarea class="form-control" rows="8" id="message2" placeholder="Message" name="message2" required></textarea>
 										<i class="fa fa-pencil form-control-feedback"></i>
 									</div>
-									<input type="submit" value="Send" class="btn btn-default">
+									<input type="submit" value="Enviar" class="btn btn-default">
 								</form>
 							</div>
 						</div>
@@ -896,3 +889,30 @@
 
 	</body>
 </html>
+<?php
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      // Debes editar las próximas dos líneas de código de acuerdo con tus preferencias
+      $email_to = "abrandsweb@gmail.com";
+      $email_subject = "Contacto desde la Pagina Principal";
+
+      // Aquí se deberían validar los datos ingresados por el usuario
+      if(!isset($_POST['name2']) ||
+          !isset($_POST['email2']) ||
+          !isset($_POST['message2'])) {
+            echo "<b><p>Ocurrió un error y el formulario no ha sido enviado. </b></p><br />";
+            echo "<p>Por favor, vuelva atrás y verifique la información ingresada</p><br />";
+          }
+
+          $email_message = "Detalles del formulario de contacto:\n\n";
+          $email_message .= "Nombre: " . $_POST['name2'] . "\n";
+          $email_message .= "E-mail: " . $_POST['email2'] . "\n";
+            $email_message .= "Website: " . $_POST['message2'] . "\n";
+
+
+            // Ahora se envía el e-mail usando la función mail() de PHP
+      $headers = 'From: '.$email_from."\r\n".
+      'Reply-To: '.$email_from."\r\n" .
+      'X-Mailer: PHP/' . phpversion();
+      mail($email_to, $email_subject, $email_message, $headers);
+    }
+ ?>
