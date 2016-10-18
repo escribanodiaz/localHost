@@ -1,0 +1,41 @@
+Class examples - exercises
+SELECTORS
+
+With the given html (jq_ex1.html)
+Get all the “p” tags
+Get the tag with id “todo-list”
+Get all the "p" elements and all the "li" with class "b"
+Get all the tags
+Get the brothers of the element "p" just after the "ul"
+Get all the tags inside a “ul” with class “b”
+Get the element “p” just after de “ul”
+BASIC FILTERS
+
+2.- With the given html (jq_ex1.html)
+
+Get the first “p” element.
+Get all the elements after the index 1
+Get the last “p” element.
+Get all the paragraphs but the one in the position 2.
+Get the pair “p” elements.
+Get the first element with “a” class.
+Get the odd elements with “b” class.
+ADVANCED FILTERS
+
+3.- With the given html (jq_ex2.html)
+
+Select all the paragraphs with the class attribute
+Select all the paragraphs that contains at least a child
+Select all the paragraphs with the id "paragraph1"
+Select all the paragraphs containing "luigi"
+Select all the paragraphs with the id beginning with "para"
+Select all the paragraphs with the id beginning with "para" and with the align attribute containing center
+Select all the visible ul
+Select the li being the second element of an ul.
+Select all the ul that contain a li with the class "a".
+Select the li being the last element of an ul.
+
+UNIT 1 - SUMMARY
+
+4.- Repeat the exercise 5 of JavaScript using only jQuery functions.
+5.- Access to lab.selectors.html and try differents selectors and filters.
