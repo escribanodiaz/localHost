@@ -1,0 +1,5 @@
+.height() --> te muestra el alto del objeto que hayas seleccionado.
+.width() --> Te muestra el ancho del objeto.
+.innerHeight() y .innerWidth() --> Introduces el tamaño que quiera que tenga el objeto.
+.offset() --> Obtener las coordenadas actuales del primer elemento, o establecer las coordenadas de cada elemento, en el conjunto de elementos coincidentes, en relación con el documento.
+.position() --> Obtener las coordenadas actuales del primer elemento en el conjunto de elementos coincidentes, en relación con el padre de desplazamiento.
