@@ -17,7 +17,7 @@
   </head>
   <body>
 
-    <form role="form" action="insertar.php" method="post">
+    <form role="form" action="php/insertar.php" method="post">
       <div class="col-md-4 center">
         <div class="form-group">
           <h1>Registro de Usuario</h1>

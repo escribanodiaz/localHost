@@ -17,6 +17,6 @@ include 'conexion.php';
  echo "El campo se ha añadido correctamente.";
  mysqli_close($conexion);
 
-header("location:index.php");
+header("location:../index.php");
 
  ?>

@@ -1,5 +1,5 @@
 <?php session_start();
-  
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +42,7 @@
 
     <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            include 'conexion.php';
+            include 'php/conexion.php';
           $usuario = mysqli_real_escape_string($conexion, $_POST['user']);
           $password = mysqli_real_escape_string($conexion, $_POST['contra']);
           $p=md5($password);
@@ -54,6 +54,7 @@
                 $_SESSION['usuario']=$usuario;
                 header("location:principal.php");
             }
+
             else {
               $mal = true;
               $mensaje='<h3 class="error">¡Usuario o contraseña incorrectos!</h3>';
