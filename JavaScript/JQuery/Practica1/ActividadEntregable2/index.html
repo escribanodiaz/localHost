@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Flat Login Form 3.0</title>
+
+  <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+  <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="pen-title">
+  <h1>Login</h1><span>Pen <i class='fa fa-paint-brush'></i> + <i class='fa fa-code'></i> by <a href='http://www.escribanodiaz.com.es'>Antonio Escribano</a></span>
+</div>
+<!-- Form Module-->
+<div class="module form-module">
+  <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+    <div class="tooltip">Click Me</div>
+  </div>
+  <div class="form">
+    <h2>Login to your account</h2>
+    <form id="commentForm" method="get" action="">
+      <input type="text" id="text" minlength="2" placeholder="Username" required/>
+      <input type="email" id="email" placeholder="E-mail" required/>
+      <input type="url" id="url" placeholder="URL"/>
+      <input type="password" id="pwd1" placeholder="Password" minlength="5" required/>
+      <input type="password" id="pwd2" placeholder="Confirm Password" required/>
+      <textarea class="form-control" rows="5" cols="27" id="comment" required></textarea>
+      <br />
+      <!--<div class="fuerzapwd">
+        <hr class="low"></hr>
+        <hr class="medium"></hr>
+        <hr class="hard"></hr>
+      </div>-->
+      <p class="alert">Te Equivocastes</p>
+      <br />
+    <input class="submit" type="submit" value="Submit">
+    </form>
+  </div>
+</div>
+<script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
+
+      <script src="js/index.js"></script>
+
+</body>
+</html>

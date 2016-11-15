@@ -8,6 +8,25 @@ h6 {
     color: #333
 }
 
+.bannernombre{
+  font-size: 30px;
+}
+.separador{
+  height: 400px;
+  background-image: url("../images/trabajoequipo.jpg");
+}
+
+.separador h1{
+  font-size: 32px;
+  color: currentColor;
+  margin-top: 112px;
+}
+
+.separador h3{
+  margin-left: 45%;
+  color: currentColor;
+}
+
 .iframemaps {
     height: 450px;
     frameborder: 0;

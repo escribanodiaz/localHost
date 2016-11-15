@@ -6,9 +6,11 @@ package es.com.escribanodiaz.listadelacompra;
 
 public class Articulo {
     private String comida;
+    private boolean comprado;
 
-    public Articulo (String comida){
+    public Articulo (String comida, Boolean comprado){
         this.comida=comida;
+        this.comprado=comprado;
     }
 
     public String getComida() {
@@ -17,5 +19,12 @@ public class Articulo {
 
     public void setComida(String comida) {
         this.comida = comida;
+    }
+
+    public boolean isComprado()	{
+        return comprado;
+    }
+    public void setComprado(boolean comprado)	{
+        this.comprado	=	comprado;
     }
 }

@@ -1,6 +1,8 @@
 package es.com.escribanodiaz.listadelacompra;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,25 +19,21 @@ import java.util.ArrayList;
 public class ViewHolder extends BaseAdapter {
 
     private Activity myContext;
-    private ArrayList<Articulo> articulos = new ArrayList<Articulo>();
+    private ArrayList<Articulo> articulos = new ArrayList();
 
-    public ViewHolder (Activity myContext){
-        super();
+    public ViewHolder (Activity myContext, ArrayList<Articulo> articulos){
         this.myContext = myContext;
-    }
-
-    private static class ViewHoldera {
-        private TextView nombrecomida;
+        this.articulos = articulos;
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return articulos.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return articulos.get(position);
     }
 
     @Override
@@ -43,26 +41,42 @@ public class ViewHolder extends BaseAdapter {
         return 0;
     }
 
+    public class ViewHolderItem {
+        private TextView nombrecomida;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View item = convertView;
-        ViewHoldera vistaTag;
+        ViewHolderItem vistaTag;
 
         if (item == null) {
             LayoutInflater inflater = myContext.getLayoutInflater();
-            item = inflater.inflate(R.layout.customcarro,null);
+            item = inflater.inflate(R.layout.customcarro, null);
 
-            vistaTag = new ViewHoldera();
-            vistaTag.nombrecomida = (TextView)item.findViewById(R.id.textView3);
+            vistaTag = new ViewHolderItem();
+            vistaTag.nombrecomida = (TextView) item.findViewById(R.id.textView3);
 
             item.setTag(vistaTag);
+        } else {
+            vistaTag = (ViewHolderItem) item.getTag();
+        }
+
+        Articulo arti = articulos.get(position);
+        vistaTag.nombrecomida.setText(arti.getComida());
+
+        if (articulos.get(position).isComprado()) {
+            vistaTag.nombrecomida.setPaintFlags(vistaTag.nombrecomida.getPaintFlags()
+                    |  Paint.STRIKE_THRU_TEXT_FLAG);
+            vistaTag.nombrecomida.setTextColor(Color.parseColor("#00FF00"));
         }
         else {
-            vistaTag = (ViewHoldera) item.getTag();
+            vistaTag.nombrecomida.setPaintFlags(vistaTag.nombrecomida.getPaintFlags()
+                    & ~Paint.STRIKE_THRU_TEXT_FLAG);
+            vistaTag.nombrecomida.setTextColor(Color.parseColor("#FF0000"));
         }
-        vistaTag.nombrecomida.setText(articulos.get(position).getComida());
 
-
-        return convertView;
+        return item;
     }
+
 }

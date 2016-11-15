@@ -1,6 +1,9 @@
 package es.com.escribanodiaz.listadelacompra;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,32 +13,58 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethod;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     static ListView carro;
-    static ArrayList arraycarro;
-    static ArrayAdapter<String> adapetercarro;
+    static ArrayList <Articulo> articulo;
     static EditText editText;
     static EditText editTexte;
     static ViewHolder holder;
+    TextView comprado;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         carro = (ListView) findViewById(R.id.carro);
-        holder = new ViewHolder(this);
-        //arraycarro = new ArrayList<String>();
+        articulo = new ArrayList<Articulo>();
+        holder = new ViewHolder(this,articulo);
+        carro.setAdapter(holder);
 
-        //adapetercarro = new ArrayAdapter<String>(this, R.layout.customcarro, arraycarro);
-        carro.setAdapter(new ViewHolder(this));
+        holder.notifyDataSetChanged();
 
+        carro.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                comprado = (TextView) view.findViewById(R.id.textView3);
+                if (articulo.get(position).isComprado()==false) {
+                    comprado.setPaintFlags(comprado.getPaintFlags()
+                            |  Paint.STRIKE_THRU_TEXT_FLAG);
+                    comprado.setTextColor(Color.parseColor("#00FF00"));
+                    articulo.get(position).setComprado(true);
+                    Toast toast1 = Toast.makeText(getApplicationContext(), "Has Comprado "+articulo.get(position).getComida(), Toast.LENGTH_SHORT);
+                    toast1.show();
+                }
+                else {
+                    comprado.setPaintFlags(comprado.getPaintFlags()
+                            & ~Paint.STRIKE_THRU_TEXT_FLAG);
+                    comprado.setTextColor(Color.parseColor("#FF0000"));
+                    Toast toast2 = Toast.makeText(getApplicationContext(), "Necessitas Comprar "+articulo.get(position).getComida(), Toast.LENGTH_SHORT);
+                    toast2.show();
+                    articulo.get(position).setComprado(false);
+                }
+            }
+        });
         registerForContextMenu(carro);
     }
 
@@ -59,12 +88,24 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                holder.add(editText.getText().toString());
-                                adapetercarro.notifyDataSetChanged();
+                                String nuevoarticulo = editText.getText().toString();
+                                nuevoarticulo = nuevoarticulo.trim();
+                                if(nuevoarticulo.length()<=0){
+                                    Toast toast3 = Toast.makeText(getApplicationContext(), "No has escrito nada", Toast.LENGTH_SHORT);
+                                    toast3.show();
+                                }
+                                else {
+                                    articulo.add(new Articulo(nuevoarticulo,false));
+                                    holder.notifyDataSetChanged();
+                                }
+                                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                                imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY,0);
                             }
                         });
 
                 builder2.create().show();
+                InputMethodManager focus = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                focus.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -78,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         if(v.getId() == R.id.carro){
             AdapterView.AdapterContextMenuInfo info =
                     (AdapterView.AdapterContextMenuInfo) menuInfo;
-            menu.setHeaderTitle(carro.getAdapter().getItem(info.position).toString());
+            menu.setHeaderTitle(articulo.get(info.position).getComida());
             inflater.inflate(R.menu.modificarlist,  menu);
         }
     }
@@ -90,34 +131,46 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
 
             case R.id.editar:
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 LayoutInflater inflater = getLayoutInflater();
                 View view = inflater.inflate(R.layout.editarticulo,null);
 
                 editTexte = (EditText) view.findViewById(R.id.editTexte);
-                editTexte.setText(carro.getAdapter().getItem(info.position).toString());
+                editTexte.setText(articulo.get(info.position).getComida());
+                editTexte.setSelection(editTexte.getText().length());
 
                 builder.setView(view)
                         .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                arraycarro.set(info.position, editTexte.getText().toString());
-                                adapetercarro.notifyDataSetChanged();
+                                String editararticulo = editTexte.getText().toString();
+                                editararticulo = editararticulo.trim();
+                                if(editararticulo.length()<=0){
+                                    Toast toast3 = Toast.makeText(getApplicationContext(), "No has escrito nada", Toast.LENGTH_SHORT);
+                                    toast3.show();
+                                }else {
+                                    articulo.get(info.position).setComida(editararticulo);
+                                    holder.notifyDataSetChanged();
+                                }
+                                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                                imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY,0);
                             }
                         });
 
+                InputMethodManager focus = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                focus.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
                 builder.create().show();
                 break;
             case R.id.borrar:
                 AlertDialog.Builder builder1 =
                         new AlertDialog.Builder(MainActivity.this);
 
-                builder1.setMessage("Deseas borra el planeta " +carro.getAdapter().getItem(info.position).toString()+".")
-                        .setTitle("Borrar Planetas")
+                builder1.setMessage("Deseas borra el articulo " +articulo.get(info.position).getComida()+".")
+                        .setTitle("Borrar Articulo")
                         .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                arraycarro.remove(info.position);
-                                adapetercarro.notifyDataSetChanged();
+                                articulo.remove(info.position);
+                                holder.notifyDataSetChanged();
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
