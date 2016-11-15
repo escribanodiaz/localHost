@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>buttons</title>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        <style>
+        .well {
+          margin-top: 10px;
+        }
+        .a{
+          color: red;
+          text-align: center;
+        }
+        </style>
+    </head>
+    <body>
+
+          <div class="col-xs-8 col-xs-offset-2 well">
+            <!--<button type="button" class="btn btn-default hey" id="btnshow">Show</button>
+            <button type="button" class="btn btn-default" id="btnhide">Hide</button>
+            <button type="button" class="btn btn-default" id="btntoggle">Toggle</button>-->
+            <span class="input-group-addon">
+                <legend>Elige un Efecto</legend>
+              <input type="radio" class="effect" name="effect" value="show" id="btnshow">Show</input>
+              <input type="radio" class="effect" name="effect" value="hide" id="btnhide">Hide</input>
+              <input type="radio" class="effect" name="effect" value="toggle" id="btntoggle">Toggle</input>
+              <input type="radio" class="effect" name="effect" value="fadeIn" id="btnfadein">FadeIn</input>
+              <input type="radio" class="effect" name="effect" value="fadeOut" id="btnfadeout">FadeOut</input>
+              <input type="radio" class="effect" name="effect" value="fadeTo" id="btnfadeto">FadeTo</input>
+              <input type="radio" class="effect" name="effect" value="fadeToggle" id="btnfadeout">fadeToggle</input>
+            </span>
+          </div>
+
+          <div class="col-xs-8 col-xs-offset-2 well">
+            <input type="text" value="" class="center-block" disabled placeholder="opacity" id="opacity"></input>
+          </div>
+
+          <div class="col-xs-8 col-xs-offset-2 well">
+            <span class="input-group-addon">
+                <legend>Elige la velocidad</legend>
+              <input type="radio" class="speed" name="speed" value="slow" id="slow">slow</input>
+              <input type="radio" class="speed" name="speed" value="fast" id="fast">fast</input>
+              <input type="radio" class="speed" name="speed" value="milliseconds" id="milliseconds">milliseconds</input>
+            </span>
+            <br>
+            <div class="row">
+              <input type="text" value="" class="center-block" disabled placeholder="speed" id="speed"></input>
+            </div>
+          </div>
+
+          <div class="col-xs-8 col-xs-offset-2 well">
+            <button type="button" class="btn btn-default hey center-block" id="btnaction">Apply effect!</button>
+          </div>
+
+          <div class="col-xs-8 col-xs-offset-2 well">
+            <div class="divImage">
+              <img class="center-block" id="image" width="200" height="300 "src="images/bce283d327add3153bbb229c460094a3.jpg" alt="image" />
+            </div>
+          </div>
+
+        <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/botones.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </body>
+</html>
